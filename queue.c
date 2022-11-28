@@ -52,7 +52,7 @@ void main()
     while (1)
     {
     int n;
-    printf("enter choice 1 for push\n2 for pop\n3 for display\n4 for exit\n");
+    printf("enter choice 1 for add\n2 for delete\n3 for display\n4 for exit\n");
     scanf("%d", &n);
         switch (n)
         {
