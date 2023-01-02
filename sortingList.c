@@ -30,7 +30,8 @@ void sort(struct node *head)
                 r->next->data = t;
             }
             r = r->next;
-        }r=head;
+        }
+        r = head;
         p = p->next;
     }
 }
@@ -43,29 +44,20 @@ void join(struct node *f, struct node *s)
     }
     p->next = s;
 }
-// void reverse(struct node *head){
-     
-//     struct node* prev = head;
-//     struct node* pres = prev->next;
-//     prev->next = NULL;
-//     struct node* temp=;
-//     while(temp->next != NULL){
-//         temp = pres->next;
-//         pres->next = prev;
-//         prev = pres;
-//         pres = temp;
-
-//     }
-//     temp->next = prev;
-//     head = pres;
-
-//     // display
-//     temp = head;
-//     while(temp != NULL){
-//         printf("%d\n", temp->data);
-//         temp = temp->next;
-//     }
-// }
+struct node *reverse(struct node *head)
+{
+    struct node *t1 = NULL;
+    struct node *t2 = NULL;
+    while (head != NULL)
+    {
+        t2 = head->next;
+        head->next = t1;
+        t1 = head;
+        head = t2;
+    }
+    head = t1;
+    return head;
+}
 void main()
 {
     struct node *head;
@@ -74,7 +66,6 @@ void main()
     struct node *fourth;
     struct node *sec;
 
-    // Allocate memory for nodes in the linked list in heap
     head = (struct node *)malloc(sizeof(struct node));
     second = (struct node *)malloc(sizeof(struct node));
     third = (struct node *)malloc(sizeof(struct node));
@@ -86,7 +77,6 @@ void main()
 
     head->data = 74;
     head->next = second;
-    // printf( "%d",head->data);
 
     second->data = 11;
     second->next = third;
@@ -100,7 +90,7 @@ void main()
     sort(head);
     linkedListTraversal(head);
     join(head, sec);
-    linkedListTraversal(head); 
-    // reverse(head);
-    // linkedListTraversal(head);
+    linkedListTraversal(head);
+    head = reverse(head);
+    linkedListTraversal(head);
 }
