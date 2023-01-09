@@ -1,0 +1,15 @@
+bool isPalindrome(struct ListNode* head){
+    struct ListNode *p=head;
+    int arr[100000],i=0;
+    for(i=0;p!=NULL; i++){
+        arr[i]=p->val;
+        p=p->next;
+    }
+    int k=i;
+    for (int i=0;i<k;i++){
+        if(arr[i] != arr[k-i-1]){
+            return false;
+        }
+    }
+    return true;
+}
